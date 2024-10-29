@@ -11,6 +11,16 @@ cols = ['MedInc','HouseAge','AveRooms','AveBedrms', 'Population','AveOccup','Lat
 datas = [0]*8
 for idx, col in enumerate(cols):
     datas[idx] = st.number_input(col)
+# MedInc= st.number_input("MedInc")
+# HouseAge= st.number_input("HouseAge")
+# AveRooms= st.number_input("AveRooms")
+# AveBedrms= st.number_input("AveBedrms")
+# Population= st.number_input("Population")
+# AveOccup= st.number_input("AveOccup")
+# Latitude= st.number_input("Latitude")
+# Longitude= st.number_input("Longitude")
+
+
 x = np.array(datas).reshape(1, -1)
 # x.shape
 
