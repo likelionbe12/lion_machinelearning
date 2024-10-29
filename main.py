@@ -3,4 +3,4 @@
 import streamlit as st
 
 st.title("MachineLearning")
-st.header("주식 예측 프로그램")
+st.header("Stock 예측 프로그램")
