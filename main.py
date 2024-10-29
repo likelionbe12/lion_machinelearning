@@ -1,18 +1,22 @@
 # streamlit에 쓸 파일
 # ml은 colab
 import streamlit as st
+from sklearn.ensemble import RandomForestRegressor
+import numpy as np
+import pickle
 
 st.title("MachineLearning")
-st.header("Stock 예측 프로그램")
+st.header("캘리포니아 집값 예측 프로그램")
+cols = ['MedInc','HouseAge','AveRooms','AveBedrms', 'Population','AveOccup','Latitude','Longitude']
+datas = [0]*8
+for idx, col in enumerate(cols):
+    datas[idx] = st.number_input(col)
+x = np.array(datas).reshape(1, -1)
+# x.shape
 
-option = st.selectbox(
-    "기업 선택",
-    ("삼성전자", "현대자동차", "SK하이닉스"),
-)
-st.write("선택 기업명:", option)
+with open("rf_house.pickle", 'rb') as f:
+    rf_model = pickle.load(f)
 
-america_option = st.selectbox(
-    "관심 기업은?",
-    ("테슬라", "OpenAI", "Meta"),
-)
-st.write("You selected:", america_option)
+y = rf_model.predict(x)
+
+st.header("예측되는 집값은 {}입니다.".format(y))
